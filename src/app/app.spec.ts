@@ -7,7 +7,12 @@ describe('App', () => {
       imports: [App],
     }).compileComponents();
   });
-}
-);
+
+  it('should create the App component', () => {
+    const fixture = TestBed.createComponent(App);
+    const appInstance = fixture.componentInstance;
+    expect(appInstance).toBeTruthy();
+  });
+});
 
 
