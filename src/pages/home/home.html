@@ -3,21 +3,30 @@
     <h1>Welkom op de website!</h1>
   </div>
   <div>
-    <button matButton="elevated" style="background-color: steelblue" (click)="openGizza()"> pannekoeken </button>
+    <button matButton="elevated" style="background-color: red" (click)="openGizza()"> pannekoeken </button>
   </div>
   <div>
     <button matButton="elevated" style="background-color: steelblue" (click)="openPizza()"> pizza </button>
   </div>
   <div>
-    <button matButton="elevated" style="background-color: steelblue" (click)="openPoffertjes()"> poffertjes </button>
+    <button matButton="elevated" style="background-color: green" (click)="openPoffertjes()"> poffertjes </button>
   </div>
   <div>
+    <button matButton="elevated" style="background-color: steelblue" (click)="opencupcakes()"> cupcakes</button>
+    </div>
+  <div>
+    <button matButton="elevated" style="background-color: pink" (click)="openkoekjes()"> koekjes </button>
+  </div>
+
+  <div>
+    <button matButton="elevated" style="background-color: purple" (click)="openmacncheese()"> macncheese </button>
+   </div>
     <picture>
       <source media="(min-width:465px)" srcset="DSC07056.jpg">
       <img src="DSC07056.jpg" alt="foto van Gijs" style="width:200px" />
     </picture>
-  </div>
-  <p>ik ben gijs boerema [7jaar]</p>
+
+  <p>Ik ben gijs boerema [7jaar]</p>
 </main>
 
 <router-outlet />

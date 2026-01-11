@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-cupcakes',
+  selector: 'app-koekjes',
   imports: [],
-  templateUrl: './cupcakes.html',
-  styleUrl: './cupcakes.scss',
+  templateUrl: './koekjes.html',
+  styleUrl: './koekjes.scss',
 })
-export class Cupcakes {
+export class Koekjes {
   goAH() {
     window.location.href = 'https://www.ah.nl';
-  }
-}
+}}
