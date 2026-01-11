@@ -38,4 +38,7 @@ export class Home {
   openmacncheese() {
     this.router.navigate(['/macncheese']);
   }
+  openeierkoeken() {
+    this.router.navigate(['/eierkoeken']);
+  }
 }
