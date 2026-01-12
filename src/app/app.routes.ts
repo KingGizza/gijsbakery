@@ -8,6 +8,7 @@ import {Macncheese} from '../pages/macncheese/macncheese';
 import {Eierkoeken} from '../pages/eierkoeken/eierkoeken';
 import {Cupcakes} from '../pages/cupcakes/cupcakes';
 import {Lasagne} from '../pages/lasagne/lasagne';
+import {Pastasaus} from '../pages/pastasaus/pastasaus';
 
 
 export const routes: Routes = [
@@ -20,4 +21,5 @@ export const routes: Routes = [
   {path: 'eierkoeken', component: Eierkoeken },
   {path: 'cupcakes', component: Cupcakes },
   {path: 'lasagne', component: Lasagne },
+  {path: 'pastasaus', component: Pastasaus }
 ];

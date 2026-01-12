@@ -45,7 +45,7 @@ export class Home {
   openlasagne() {
     this.router.navigate(['/lasagne']);
   }
-  openpannekoeken(){
-    this.router.navigate(['/pannekoeken']);
-  }
+ openpastasaus(){
+    this.router.navigate(['/pastasaus']);
+ }
 }

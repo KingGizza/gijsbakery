@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-lasagne',
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   templateUrl: './lasagne.html',
   styleUrl: './lasagne.scss',
 })
