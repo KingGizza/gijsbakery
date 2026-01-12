@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './eierkoeken.scss',
 })
 export class Eierkoeken {
-
+  goAH() {
+    window.location.href = 'https://www.ah.nl';
+  }
 }

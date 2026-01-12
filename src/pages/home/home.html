@@ -1,7 +1,24 @@
 <main>
   <div>
-    <h1>Welkom op de website!</h1>
+    <h1>Welkom op  gijs bakery!</h1>
   </div>
+
+  <button matButton [matMenuTriggerFor]="aboveMenu" style="background-color: grey">Hoofdgerechten</button>
+  <mat-menu #aboveMenu="matMenu" yPosition="above">
+    <button mat-menu-item (click)="openPizza()">Pizza</button>
+    <button mat-menu-item (click)="openGizza()">pannekoeken</button>
+    <button mat-menu-item (click)="openlasagne()">lasagne</button>
+    <button mat-menu-item (click)="openmacncheese()">macncheese</button>
+  </mat-menu>
+  <button matButton [matMenuTriggerFor]="aboveMenu" style="background-color: chocolate">tussendoortje</button>
+  <mat-menu #aboveMenu="matMenu" yPosition="above">
+    <button mat-menu-item (click)="openkoekjes()">koekjes</button>
+    <button mat-menu-item (click)="openeierkoeken()">eierkoeken</button>
+    <button mat-menu-item (click)="openlasagne()">lasagne</button>
+    <button mat-menu-item (click)="openmacncheese()">macncheese</button>
+  </mat-menu>
+
+
   <div>
     <button matButton="elevated" style="background-color: red" (click)="openGizza()"> pannekoeken </button>
   </div>
@@ -24,12 +41,17 @@
   <div>
     <button matButton="elevated" style="background-color: peru" (click)="openeierkoeken()"> eierkoeken </button>
   </div>
+  <div>
+    <button matButton="elevated" style="background-color: peru" (click)="openlasagne()"> lasagne </button>
+  </div>
+  <div>
+
+  </div>
     <picture>
-      <source media="(min-width:465px)" srcset="DSC07056.jpg">
+      <source media="(min-width:465px)" srcset="DSC07056.jpg">     <p>ik ben</p>
       <img src="DSC07056.jpg" alt="foto van Gijs" style="width:200px" />
     </picture>
 
-  <p>Ik ben gijs boerema [7jaar]</p>
 </main>
 
 <router-outlet />
