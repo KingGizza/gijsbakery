@@ -9,46 +9,17 @@
     <button mat-menu-item (click)="openGizza()">pannekoeken</button>
     <button mat-menu-item (click)="openlasagne()">lasagne</button>
     <button mat-menu-item (click)="openmacncheese()">macncheese</button>
+    <button mat-menu-item (click)="openPoffertjes()">poffertjes</button>
   </mat-menu>
-  <button matButton [matMenuTriggerFor]="aboveMenu" style="background-color: chocolate">tussendoortje</button>
-  <mat-menu #aboveMenu="matMenu" yPosition="above">
+  <button matButton [matMenuTriggerFor]="afterMenu" style="background-color: chocolate">Tussendoortjes</button>
+  <mat-menu #afterMenu="matMenu" xPosition="after">
     <button mat-menu-item (click)="openkoekjes()">koekjes</button>
     <button mat-menu-item (click)="openeierkoeken()">eierkoeken</button>
-    <button mat-menu-item (click)="openlasagne()">lasagne</button>
-    <button mat-menu-item (click)="openmacncheese()">macncheese</button>
+    <button mat-menu-item (click)="opencupcakes()">cupcakes</button>
   </mat-menu>
 
-
-  <div>
-    <button matButton="elevated" style="background-color: red" (click)="openGizza()"> pannekoeken </button>
-  </div>
-  <div>
-    <button matButton="elevated" style="background-color: blue" (click)="openPizza()"> pizza </button>
-  </div>
-  <div>
-    <button matButton="elevated" style="background-color: green" (click)="openPoffertjes()"> poffertjes </button>
-  </div>
-  <div>
-    <button matButton="elevated" style="background-color: steelblue" (click)="opencupcakes()"> cupcakes</button>
-    </div>
-  <div>
-    <button matButton="elevated" style="background-color: pink" (click)="openkoekjes()"> koekjes </button>
-  </div>
-
-  <div>
-    <button matButton="elevated" style="background-color: purple" (click)="openmacncheese()"> macncheese </button>
-   </div>
-  <div>
-    <button matButton="elevated" style="background-color: peru" (click)="openeierkoeken()"> eierkoeken </button>
-  </div>
-  <div>
-    <button matButton="elevated" style="background-color: peru" (click)="openlasagne()"> lasagne </button>
-  </div>
-  <div>
-
-  </div>
     <picture>
-      <source media="(min-width:465px)" srcset="DSC07056.jpg">     <p>ik ben</p>
+      <source media="(min-width:465px)" srcset="DSC07056.jpg">     <p>ik ben gijs boerema (7 jaar)</p>
       <img src="DSC07056.jpg" alt="foto van Gijs" style="width:200px" />
     </picture>
 
