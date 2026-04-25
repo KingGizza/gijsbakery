@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './flatbreadcrispychicken.scss',
 })
 export class Flatbreadcrispychicken {
+  goAH() {
+    window.location.href = 'https://www.ah.nl';
+  }
 
 }

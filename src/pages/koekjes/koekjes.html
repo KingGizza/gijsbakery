@@ -1,4 +1,14 @@
 <h1>koekjes</h1>
+<p>Wil je extra zoete koekjes?</p>
+<mat-button-toggle-group
+  name="favoriteColor"
+  aria-label="Favorite Color"
+  style="background-color: limegreen"
+  [hideSingleSelectionIndicator]="hideSingleSelectionIndicator()"
+>
+  <mat-button-toggle value="Ja">ja</mat-button-toggle>
+  <mat-button-toggle value="Nee">nee</mat-button-toggle>
+</mat-button-toggle-group>
 <ul>
 <li>.125 gram zachte boter</li>
 <li>.90 gram poedersuiker</li>

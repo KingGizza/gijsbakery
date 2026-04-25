@@ -5,25 +5,25 @@
 
   <button matButton [matMenuTriggerFor]="aboveMenu" style="background-color: grey">Hoofdgerechten</button>
   <mat-menu #aboveMenu="matMenu" yPosition="above">
-    <button mat-menu-item (click)="openPizza()">Pizza</button>
-    <button mat-menu-item (click)="openGizza()">pannekoeken</button>
-    <button mat-menu-item (click)="openlasagne()">lasagne</button>
-    <button mat-menu-item (click)="openmacncheese()">macncheese</button>
-    <button mat-menu-item (click)="openPoffertjes()">poffertjes</button>
-    <button mat-menu-item (click)="openpastasaus()">pastasaus</button>
+    <button mat-menu-item style="background-color: darkred" (click)="openPizza()">Pizza</button>
+    <button mat-menu-item style="background-color: aqua" (click)="openGizza()">pannekoeken</button>
+    <button mat-menu-item style="background-color: chocolate" (click)="openlasagne()">lasagne</button>
+    <button mat-menu-item style="background-color: yellow" (click)="openmacncheese()">macncheese</button>
+    <button mat-menu-item style="background-color: peru" (click)="openPoffertjes()">poffertjes</button>
+    <button mat-menu-item style="background-color: lightgreen" (click)="openpastasaus()">pastasaus</button>
+    <button mat-menu-item style="background-color: orangered" (click)="openflatbreadcrispychicken()">flatbreadcrispychicken</button>
   </mat-menu>
   <button matButton [matMenuTriggerFor]="afterMenu" style="background-color: chocolate">Tussendoortjes</button>
   <mat-menu #afterMenu="matMenu" xPosition="after">
-    <button mat-menu-item (click)="openkoekjes()">koekjes</button>
-    <button mat-menu-item (click)="openeierkoeken()">eierkoeken</button>
-    <button mat-menu-item (click)="opencupcakes()">cupcakes</button>
-  </mat-menu>
+    <button mat-menu-item style="background-color: red" (click)="openkoekjes()">koekjes</button>
+    <button mat-menu-item style="background-color: lightgreen" (click)="openeierkoeken()">eierkoeken</button>
+    <button mat-menu-item style="background-color: blueviolet" (click)="opencupcakes()">cupcakes</button>
 
+
+</mat-menu>
     <picture>
       <source media="(min-width:465px)" srcset="DSC07056.jpg">     <p>ik ben gijs boerema (7 jaar)</p>
       <img src="DSC07056.jpg" alt="foto van Gijs" style="width:200px" />
     </picture>
-
-</main>
-
 <router-outlet />
+</main>

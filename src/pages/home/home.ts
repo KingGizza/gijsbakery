@@ -1,26 +1,33 @@
-import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouterOutlet } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
-import {MatMenu, MatMenuTrigger} from '@angular/material/menu';
+import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {provideNativeDateAdapter} from '@angular/material/core';
+
 @Component({
   selector: 'app-home',
-  imports: [RouterOutlet, MatButtonModule, MatMenu, MatMenuTrigger],
+  imports: [RouterOutlet, MatButtonModule, MatMenu, MatMenuTrigger, MatMenuItem,MatFormFieldModule, MatInputModule, MatDatepickerModule],
+  providers: [provideNativeDateAdapter()],
   templateUrl: './home.html',
   styleUrl: './home.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+
 })
 export class Home {
+  date: string="";
   constructor(private router: Router) {
   }
 
   openGizza() {
     this.router.navigate(['/gizza']);
-
   }
 
   openPizza() {
     this.router.navigate(['/pizza']);
-
   }
 
   openPoffertjes() {
@@ -29,7 +36,6 @@ export class Home {
 
   opencupcakes() {
     this.router.navigate(['/cupcakes']);
-
   }
 
   openkoekjes() {
@@ -48,4 +54,8 @@ export class Home {
  openpastasaus(){
     this.router.navigate(['/pastasaus']);
  }
+ openflatbreadcrispychicken() {
+   this.router.navigate(['/flatbreadcrispychicken']);
+ }
+
 }
