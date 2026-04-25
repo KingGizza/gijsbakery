@@ -62,10 +62,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "materialtest:build:production"
+              "buildTarget": "gijsbakery:build:production"
             },
             "development": {
-              "buildTarget": "materialtest:build:development"
+              "buildTarget": "gijsbakery:build:development"
             }
           },
           "defaultConfiguration": "development"
