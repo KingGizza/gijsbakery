@@ -9,26 +9,24 @@ on:
 
 jobs:
   build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          submodules: true
+    - name: Build (and prepare artifact)
+  run: |
+    cd swa-db-connections
+    npm ci
+    npm run build
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
-
-      - name: Build (app in swa-db-connections)
-        run: |
-          cd swa-db-connections
-          npm ci
-          npm run build
-
+    # ensure artifact folder expected by the SWA exists
+    mkdir -p dist/sun-60-win
+    if [ -d build ] && [ "$(ls -A build)" ]; then
+      cp -a build/. dist/sun-60-win/
+    elif [ -d dist ] && [ "$(ls -A dist)" ]; then
+      cp -a dist/. dist/sun-60-win/
+    elif [ -d public ] && [ "$(ls -A public)" ]; then
+      cp -a public/. dist/sun-60-win/
+    else
+      echo "No build output found. Failing."
+      exit 1
+    fi
   deploy:
     name: Deploy (only runs on push to main)
     needs: build
