@@ -1,4 +1,4 @@
-# CI/CD for Azure Static Web Apps (explicit, safer)
+# .github/workflows/azure-static-web-apps-black-pebble-0672cc41e.yml
 name: CI/CD - Azure Static Web Apps
 
 on:
@@ -8,62 +8,57 @@ on:
     branches: [ main ]
 
 jobs:
- # Build (produce artifacts and normalize to dist/sun-60-win)
-- name: Build (and prepare artifact)
-  run: |
-    set -euo pipefail
-    cd swa-db-connections
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
 
-    echo "Node: $(node --version || true)"
-    echo "NPM: $(npm --version || true)"
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
 
-    npm ci
-    npm run build
+      - name: Install & Build (repo root)
+        run: |
+          set -euo pipefail
+          echo "Working directory: $(pwd)"
+          ls -la
+          # Install and build at repo root. If your project is inside a subfolder, cd there instead.
+          npm ci
+          npm run build
+          echo "Build outputs (root/dist):"
+          ls -la dist || true
+          ls -la dist/materialtest || true
 
-    echo "Looking for build outputs..."
-    # prefer common folders
-    if [ -d build ] && [ "$(ls -A build)" ]; then
-      SRC="build"
-    elif [ -d dist ] && [ "$(ls -A dist)" ]; then
-      SRC="dist"
-    elif [ -d public ] && [ "$(ls -A public)" ]; then
-      SRC="public"
-    else
-      echo "No build output found (build/dist/public). Listing repo:"
-      ls -la
-      exit 1
-    fi
+      - name: Prepare artifact for SWA (ensure expected path exists)
+        run: |
+          # Ensure artifact path exists. If your artifact is already at dist/materialtest this is a no-op.
+          mkdir -p dist/materialtest
+          echo "Contents of dist/materialtest:"
+          ls -la dist/materialtest || true
 
-    echo "Detected build output in: $SRC"
-    TARGET="dist/sun-60-win"
-    mkdir -p "$TARGET"
-    echo "Copying $SRC -> $TARGET"
-    cp -a "$SRC"/. "$TARGET"/
-    echo "Contents of $TARGET:"
-    ls -la "$TARGET" | sed -n '1,200p'
+  deploy:
+    name: Deploy (only runs on push to main)
+    needs: build
+    runs-on: ubuntu-latest
+    if: "github.event_name == 'push' && github.ref == 'refs/heads/main'"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-# Debug: show workspace before deploy (optional but useful)
-- name: Debug: show workspace & artifact
-  run: |
-    echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
-    pwd
-    echo "Root listing:"
-    ls -la
-    echo "swa-db-connections listing:"
-    ls -la swa-db-connections || true
-    echo "Expected artifact path (repo-relative): swa-db-connections/dist/sun-60-win"
-    ls -la swa-db-connections/dist/sun-60-win || true
-
-# Deploy
-- name: Deploy to Azure Static Web Apps
-  uses: Azure/static-web-apps-deploy@v1
-  with:
-    azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-    repo_token: ${{ secrets.GITHUB_TOKEN }}
-    action: "upload"
-    app_location: "swa-db-connections"      # folder containing your project
-    api_location: ""                        # leave empty if none
-    output_location: "dist/sun-60-win"      # relative to app_location
+      - name: Check AZURE SWA token exists
+        run: |
+          if [ -z "${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}" ]; then
+            echo "ERROR: AZURE_STATIC_WEB_APPS_API_TOKEN secret is missing or empty"
+            exit 1
+          else
+            echo "AZURE_STATIC_WEB_APPS_API_TOKEN present (length: $(echo -n "${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}" | wc -c) chars)"
+          fi
 
       - name: Debug: show workspace & artifact
         run: |
@@ -71,11 +66,10 @@ jobs:
           pwd
           echo "Root listing:"
           ls -la
-          echo "swa-db-connections listing:"
-          ls -la swa-db-connections || true
-          echo "Build output check (relative to app_location):"
-          ls -la swa-db-connections/dist || true
-          ls -la swa-db-connections/dist/sun-60-win|| true
+          echo "dist listing (repo root):"
+          ls -la dist || true
+          echo "dist/materialtest listing:"
+          ls -la dist/materialtest || true
 
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
@@ -83,6 +77,7 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "swa-db-connections"       # change to "/" if app is at repo root
-          api_location: ""                         # set if you have an API folder
-          output_location: "dist/sun-60-win"     # relative to app_location
+          skip_app_build: true
+          app_location: "/"                  # repo root (adjust if your app is in a subfolder)
+          api_location: ""                   # set if you have an API folder
+          output_location: "dist/materialtest"   # <--- changed output location you requested
