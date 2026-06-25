@@ -22,6 +22,7 @@ jobs:
         with:
           submodules: true
           lfs: false
+          persist-credentials: false
       - name: Fix git permissions
         run: sudo chown -R $(whoami):$(whoami) .git
       - name: Install OIDC Client from Core Package
