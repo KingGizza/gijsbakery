@@ -1,57 +1,70 @@
-name: Azure Static Web Apps CI/CD
+# CI/CD for Azure Static Web Apps (explicit, safer)
+name: CI/CD - Azure Static Web Apps
 
 on:
   push:
-    branches:
-      - main
-      - main workflow_dispatch
+    branches: [ main ]
   pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  build_and_deploy_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+  build:
+    name: Build
     runs-on: ubuntu-latest
-    name: Build and Deploy Job
-    permissions:
-       id-token: write
-       contents: read
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           submodules: true
-          lfs: false
-      - name: Check AZURE secret exists
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Build (app in swa-db-connections)
+        run: |
+          cd swa-db-connections
+          npm ci
+          npm run build
+
+  deploy:
+    name: Deploy (only runs on push to main)
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check AZURE SWA token exists
         run: |
           if [ -z "${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}" ]; then
-            echo "ERROR: AZURE_STATIC_WEB_APPS_API_TOKEN secret is missing or not available to this run"
+            echo "ERROR: AZURE_STATIC_WEB_APPS_API_TOKEN secret is missing or empty"
             exit 1
           else
-            echo "AZURE_STATIC_WEB_APPS_API_TOKEN appears present (length: $(echo -n "${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}" | wc -c) chars)"
-          fi    
-      - name: Install OIDC Client from Core Package
-        run: npm install @actions/core@1.6.0 @actions/http-client
-      - name: Build
-        run: npm run build 
-      - name: Build And Deploy
-        id: builddeploy
+            echo "AZURE_STATIC_WEB_APPS_API_TOKEN present (length: $(echo -n "${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}" | wc -c) chars)"
+          fi
+
+      - name: Debug: show workspace & artifact
+        run: |
+          echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+          pwd
+          echo "Root listing:"
+          ls -la
+          echo "swa-db-connections listing:"
+          ls -la swa-db-connections || true
+          echo "Build output check (relative to app_location):"
+          ls -la swa-db-connections/dist || true
+          ls -la swa-db-connections/dist/materialtest || true
+
+      - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "/" 
-          api_location: "" 
-          output_location: "dist/materialtest"
-
-  close_pull_request_job:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
-    runs-on: ubuntu-latest
-    name: Close Pull Request Job
-    steps:
-      - name: Close Pull Request
-        id: closepullrequest
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          action: "close"
+          app_location: "swa-db-connections"       # change to "/" if app is at repo root
+          api_location: ""                         # set if you have an API folder
+          output_location: "dist/materialtest"     # relative to app_location
