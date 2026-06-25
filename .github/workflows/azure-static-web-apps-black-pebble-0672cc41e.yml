@@ -57,7 +57,7 @@ jobs:
           ls -la swa-db-connections || true
           echo "Build output check (relative to app_location):"
           ls -la swa-db-connections/dist || true
-          ls -la swa-db-connections/dist/materialtest || true
+          ls -la swa-db-connections/dist/sun-60-win|| true
 
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
@@ -67,4 +67,4 @@ jobs:
           action: "upload"
           app_location: "swa-db-connections"       # change to "/" if app is at repo root
           api_location: ""                         # set if you have an API folder
-          output_location: "dist/materialtest"     # relative to app_location
+          output_location: "dist/sun-60-win"     # relative to app_location
