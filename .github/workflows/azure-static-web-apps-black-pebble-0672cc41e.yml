@@ -23,6 +23,14 @@ jobs:
         with:
           submodules: true
           lfs: false
+      - name: Check AZURE secret exists
+        run: |
+          if [ -z "${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}" ]; then
+            echo "ERROR: AZURE_STATIC_WEB_APPS_API_TOKEN secret is missing or not available to this run"
+            exit 1
+          else
+            echo "AZURE_STATIC_WEB_APPS_API_TOKEN appears present (length: $(echo -n "${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}" | wc -c) chars)"
+          fi    
       - name: Install OIDC Client from Core Package
         run: npm install @actions/core@1.6.0 @actions/http-client
       - name: Build
