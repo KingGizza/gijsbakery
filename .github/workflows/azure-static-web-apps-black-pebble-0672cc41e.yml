@@ -1,4 +1,3 @@
-# .github/workflows/azure-static-web-apps-black-pebble-0672cc41e.yml
 name: CI/CD - Azure Static Web Apps
 
 on:
@@ -28,16 +27,15 @@ jobs:
           set -euo pipefail
           echo "Working directory: $(pwd)"
           ls -la
-          # Install and build at repo root. If your project is inside a subfolder, cd there instead.
           npm ci
           npm run build
           echo "Build outputs (root/dist):"
           ls -la dist || true
           ls -la dist/materialtest || true
 
-      - name: Prepare artifact for SWA (ensure expected path exists)
+      - name: Prepare artifact (ensure folder exists)
         run: |
-          # Ensure artifact path exists. If your artifact is already at dist/materialtest this is a no-op.
+          # Ensure artifact path exists (no-op if build already wrote it)
           mkdir -p dist/materialtest
           echo "Contents of dist/materialtest:"
           ls -la dist/materialtest || true
@@ -78,6 +76,6 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           skip_app_build: true
-          app_location: "/"                  # repo root (adjust if your app is in a subfolder)
-          api_location: ""                   # set if you have an API folder
-          output_location: "dist/materialtest"   # <--- changed output location you requested
+          app_location: "/"                    # repo root
+          api_location: ""                     # set if you have an api folder
+          output_location: "dist/materialtest" # match the artifact Oryx produced
