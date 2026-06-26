@@ -1,0 +1,91 @@
+name: CI/CD - Azure Static Web Apps
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install & Build (repo root)
+        run: |
+          set -euo pipefail
+          echo "Working directory: $(pwd)"
+          ls -la
+          npm install
+          npm run build
+          echo "Build outputs (root/dist):"
+          ls -la dist || true
+          echo "Contents of dist/gijsbakery:"
+          ls -lah dist/gijsbakery || echo "dist/gijsbakery does not exist"
+          find dist -type f -name "*.html" 2>/dev/null || echo "No HTML files found"
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: dist/gijsbakery/browser
+          if-no-files-found: error
+
+  deploy:
+    name: Deploy (only runs on push to main)
+    needs: build
+    runs-on: ubuntu-latest
+    if: "github.event_name == 'push' && github.ref == 'refs/heads/main'"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+          path: dist/gijsbakery
+
+      - name: Check AZURE SWA token exists
+        run: |
+          if [ -z "${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}" ]; then
+            echo "ERROR: AZURE_STATIC_WEB_APPS_API_TOKEN secret is missing or empty"
+            exit 1
+          else
+            echo "AZURE_STATIC_WEB_APPS_API_TOKEN present (length: $(echo -n "${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}" | wc -c) chars)"
+          fi
+
+      - name: Debug show workspace & artifact
+        run: |
+           echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+           pwd
+           echo "Root listing:"
+           ls -la
+           echo "dist listing (repo root):"
+           ls -la dist || true
+           echo "dist/gijsbakery listing:"
+           ls -lah dist/gijsbakery || true
+           echo "Looking for index.html:"
+           find dist -name "index.html" 2>/dev/null || echo "No index.html found"
+
+      - name: Deploy to Azure Static Web Apps
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          skip_app_build: true
+          app_location: "dist/gijsbakery"
+          api_location: ""
+          output_location: ""
