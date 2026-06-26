@@ -33,12 +33,12 @@ jobs:
           ls -la dist || true
           ls -la dist/gijsbakery || true
 
-      - name: Prepare artifact (ensure folder exists)
-        run: |
-          # Ensure artifact path exists (no-op if build already wrote it)
-          mkdir -p dist/gijsbakery
-          echo "Contents of dist/gijsbakery:"
-          ls -la dist/gijsbakery || true
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: dist/gijsbakery
+          if-no-files-found: error
 
   deploy:
     name: Deploy (only runs on push to main)
@@ -48,6 +48,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+          path: dist/gijsbakery
+
       - name: Check AZURE SWA token exists
         run: |
           if [ -z "${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}" ]; then
@@ -56,6 +63,7 @@ jobs:
           else
             echo "AZURE_STATIC_WEB_APPS_API_TOKEN present (length: $(echo -n "${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}" | wc -c) chars)"
           fi
+
       - name: Debug show workspace & artifact
         run: |
            echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
@@ -66,6 +74,7 @@ jobs:
            ls -la dist || true
            echo "dist/gijsbakery listing:"
            ls -la dist/gijsbakery || true
+
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
         with:
