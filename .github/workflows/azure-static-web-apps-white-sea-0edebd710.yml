@@ -73,6 +73,6 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           skip_app_build: true
-          app_location: "/"
+          app_location: "dist/gijsbakery"
           api_location: ""
-          output_location: "dist/gijsbakery"
+          output_location: ""
