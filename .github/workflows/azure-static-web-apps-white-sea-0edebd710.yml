@@ -31,7 +31,9 @@ jobs:
           npm run build
           echo "Build outputs (root/dist):"
           ls -la dist || true
-          ls -la dist/gijsbakery || true
+          echo "Contents of dist/gijsbakery:"
+          ls -lah dist/gijsbakery || echo "dist/gijsbakery does not exist"
+          find dist -type f -name "*.html" 2>/dev/null || echo "No HTML files found"
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -73,7 +75,9 @@ jobs:
            echo "dist listing (repo root):"
            ls -la dist || true
            echo "dist/gijsbakery listing:"
-           ls -la dist/gijsbakery || true
+           ls -lah dist/gijsbakery || true
+           echo "Looking for index.html:"
+           find dist -name "index.html" 2>/dev/null || echo "No index.html found"
 
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
