@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "materialtest": {
+    "gijsbakery": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
