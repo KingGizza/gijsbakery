@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
-          path: dist/gijsbakery
+          path: dist/gijsbakery/browser
           if-no-files-found: error
 
   deploy:
