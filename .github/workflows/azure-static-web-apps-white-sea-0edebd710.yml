@@ -27,7 +27,7 @@ jobs:
           set -euo pipefail
           echo "Working directory: $(pwd)"
           ls -la
-          npm ci
+          npm install
           npm run build
           echo "Build outputs (root/dist):"
           ls -la dist || true
