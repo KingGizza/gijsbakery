@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './macncheese.scss',
 })
 export class Macncheese {
+  goAH() {
+    window.location.href = 'https://www.ah.nl';
+  }
 
 }
