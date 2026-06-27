@@ -6,6 +6,10 @@ import { Component } from '@angular/core';
   templateUrl: './loempia.html',
   styleUrl: './loempia.scss',
 })
-export class Loempia {
 
+  export class Loempia {
+  goAH() {
+    window.location.href = 'https://www.ah.nl';
+  }
 }
+
