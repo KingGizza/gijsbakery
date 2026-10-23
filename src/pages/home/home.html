@@ -25,6 +25,7 @@
 </mat-menu>
   <button matButton [matMenuTriggerFor]="overigeMenu" style="background-color: steelblue">Overige</button>
   <mat-menu #overigeMenu="matMenu" xPosition="after">
+    <button mat-menu-item style="background-color: lightblue" (click)="openwiebenik()">wie ben ik</button>
   </mat-menu>
   <button matButton [matMenuTriggerFor]="snacksMenu" style="background-color: rgb(255, 0, 111)">Snacks</button>
   <mat-menu #snacksMenu="matMenu" xPosition="after">

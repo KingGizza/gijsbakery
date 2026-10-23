@@ -60,5 +60,8 @@ export class Home {
  openloempia() {
    this.router.navigate(['/loempia']);
  }
+ openwiebenik() {
+   this.router.navigate(['/wiebenik']);
+ }
 
 }
