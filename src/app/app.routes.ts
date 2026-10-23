@@ -9,6 +9,7 @@ import {Eierkoeken} from '../pages/eierkoeken/eierkoeken';
 import {Cupcakes} from '../pages/cupcakes/cupcakes';
 import {Lasagne} from '../pages/lasagne/lasagne';
 import {Pastasaus} from '../pages/pastasaus/pastasaus';
+import {Loempia} from '../pages/loempia/loempia';
 import {Flatbreadcrispychicken} from '../pages/flatbreadcrispychicken/flatbreadcrispychicken';
 
 
@@ -24,5 +25,6 @@ export const routes: Routes = [
   {path: 'lasagne', component: Lasagne },
   {path: 'pastasaus', component: Pastasaus },
   {path: 'flatbreadcrispychicken', component: Flatbreadcrispychicken},
+  {path: 'loempia', component: Loempia},
 
 ];

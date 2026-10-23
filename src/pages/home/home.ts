@@ -57,5 +57,8 @@ export class Home {
  openflatbreadcrispychicken() {
    this.router.navigate(['/flatbreadcrispychicken']);
  }
+ openloempia() {
+   this.router.navigate(['/loempia']);
+ }
 
 }

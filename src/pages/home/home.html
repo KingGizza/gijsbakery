@@ -11,6 +11,7 @@
     <button mat-menu-item style="background-color: yellow" (click)="openmacncheese()">macncheese</button>
     <button mat-menu-item style="background-color: peru" (click)="openPoffertjes()">poffertjes</button>
     <button mat-menu-item style="background-color: orangered" (click)="openflatbreadcrispychicken()">flatbreadcrispychicken</button>
+    <button mat-menu-item style="background-color: tomato" (click)="openpastasaus()">pastasaus</button>
   </mat-menu>
   <button matButton [matMenuTriggerFor]="afterMenu" style="background-color: chocolate">Tussendoortjes</button>
   <mat-menu #afterMenu="matMenu" xPosition="after">
@@ -22,6 +23,13 @@
 </div>
 
 </mat-menu>
+  <button matButton [matMenuTriggerFor]="overigeMenu" style="background-color: steelblue">Overige</button>
+  <mat-menu #overigeMenu="matMenu" xPosition="after">
+  </mat-menu>
+  <button matButton [matMenuTriggerFor]="snacksMenu" style="background-color: rgb(255, 0, 111)">Snacks</button>
+  <mat-menu #snacksMenu="matMenu" xPosition="after">
+    <button mat-menu-item style="background-color: gold" (click)="openloempia()">loempia</button>
+  </mat-menu>
     <picture>
       <source media="(min-width:465px)" srcset="DSC07056.jpg">     <p>ik ben gijs boerema (8 jaar)</p>
       <img src="DSC07056.jpg" alt="foto van Gijs" style="width:200px" />
