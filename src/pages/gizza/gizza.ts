@@ -1,9 +1,10 @@
+import {RouterLink} from '@angular/router';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-gizza',
-  imports: [MatButtonModule],
+  imports: [RouterLink, MatButtonModule],
   templateUrl: './gizza.html',
   styleUrl: './gizza.scss',
 })

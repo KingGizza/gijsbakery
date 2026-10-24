@@ -1,3 +1,4 @@
+import {RouterLink} from '@angular/router';
 
 import {Component} from '@angular/core';
 
@@ -6,9 +7,7 @@ import {Component} from '@angular/core';
 export class DatepickerOverviewExample {}
 @Component({
   selector: 'app-poffertjes',
-  imports: [
-
-  ],
+  imports: [RouterLink],
   templateUrl: './poffertjes.html',
   styleUrl: './poffertjes.scss',
 })

@@ -1,10 +1,11 @@
+import {RouterLink} from '@angular/router';
 import { Component, signal } from '@angular/core';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 @Component({
   selector: 'app-koekjes',
-  imports: [MatButtonToggleModule],
+  imports: [RouterLink, MatButtonToggleModule],
   templateUrl: './koekjes.html',
   styleUrl: './koekjes.scss',
 })
