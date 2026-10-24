@@ -2,14 +2,15 @@
   <button style="background-color: steelblue" routerLink="/">home</button>
 </div>
 <h1>cupcakes</h1>
+<app-personen-kiezer />
 <div>
   <ul>
   <li>twee keer bakvorm met vormpjes</li>
-  <li>150 gram roomboter</li>
-  <li>150 gram suiker</li>
-  <li>170 gram bloem</li>
-  <li>3 gram bakpoeder</li>
-  <li>3 eieren</li>
+  <li><app-hoeveel [aantal]="150" /> gram roomboter</li>
+  <li><app-hoeveel [aantal]="150" /> gram suiker</li>
+  <li><app-hoeveel [aantal]="170" /> gram bloem</li>
+  <li><app-hoeveel [aantal]="3" /> gram bakpoeder</li>
+  <li><app-hoeveel [aantal]="3" /> eieren</li>
   <li>snuf zout</li>
 
     <h1>aan de slag</h1>

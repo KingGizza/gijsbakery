@@ -2,13 +2,14 @@
   <button style="background-color: steelblue" routerLink="/">home</button>
 </div>
 <h1>koekjes</h1>
+<app-personen-kiezer />
 
 <ul>
-<li>225 gram ongezouten roomboter</li>
-<li>150 gram witte basterdsuiker</li>
-<li>8 gram vanillesuiker</li>
-<li>1 eidooier</li>
-<li>280 gram bloem</li>
+<li><app-hoeveel [aantal]="225" /> gram ongezouten roomboter</li>
+<li><app-hoeveel [aantal]="150" /> gram witte basterdsuiker</li>
+<li><app-hoeveel [aantal]="8" /> gram vanillesuiker</li>
+<li><app-hoeveel [aantal]="1" /> eidooier</li>
+<li><app-hoeveel [aantal]="280" /> gram bloem</li>
 <li>snuf zout</li>
 </ul>
 <button mat-button="elevated" style="background-color: steelblue" (click)="goAH()">albert heijn</button>

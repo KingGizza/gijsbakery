@@ -2,24 +2,25 @@
   <button style="background-color: steelblue" routerLink="/">home</button>
 </div>
 <h1>pizza</h1>
+<app-personen-kiezer />
 <div>
 
   <ul>
     <li>deeg:</li>
-  <li>500 gram bloem</li>
-  <li>7 gram droge gist</li>
-  <li>325 ml water</li>
-  <li>1 eetlepel olijfolie</li>
+  <li><app-hoeveel [aantal]="500" /> gram bloem</li>
+  <li><app-hoeveel [aantal]="7" /> gram droge gist</li>
+  <li><app-hoeveel [aantal]="325" /> ml water</li>
+  <li><app-hoeveel [aantal]="1" /> eetlepel olijfolie</li>
   <li>snufje zout</li>
   </ul>
 </div>
 <div>
   <ul>
   <li>saus:</li>
-  <li>.1 blik tomatenpuree</li>
-  <li>.1 teentje knoflook</li>
-  <li>.1 eetlepel olijfolie</li>
-  <li>.kruiden naar smaak (bijv. oregano, basilicum, peper, zout)</li>
+  <li><app-hoeveel [aantal]="1" /> blik tomatenpuree</li>
+  <li><app-hoeveel [aantal]="1" /> teentje knoflook</li>
+  <li><app-hoeveel [aantal]="1" /> eetlepel olijfolie</li>
+  <li>kruiden naar smaak (bijv. oregano, basilicum, peper, zout)</li>
   <li>[en wat je zelf er op wil]</li>
   </ul>
 </div>

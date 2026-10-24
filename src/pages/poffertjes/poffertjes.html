@@ -2,15 +2,16 @@
   <button style="background-color: steelblue" routerLink="/">home</button>
 </div>
 <h1>poffertjes</h1>
+<app-personen-kiezer />
 <div>
   <ul>
-  <li>.250 gram bloem</li>
-  <li>.1/2 theelepel bakpoeder</li>
-  <li>.1 eetlepel suiker</li>
-  <li>.1 snufje zout</li>
-  <li>.300 ml melk</li>
-  <li>.1 ei</li>
-  <li>.25 gram gesmolten boter</li>
+  <li><app-hoeveel [aantal]="250" /> gram bloem</li>
+  <li><app-hoeveel [aantal]="0.5" /> theelepel bakpoeder</li>
+  <li><app-hoeveel [aantal]="1" /> eetlepel suiker</li>
+  <li><app-hoeveel [aantal]="1" /> snufje zout</li>
+  <li><app-hoeveel [aantal]="300" /> ml melk</li>
+  <li><app-hoeveel [aantal]="1" /> ei</li>
+  <li><app-hoeveel [aantal]="25" /> gram gesmolten boter</li>
   </ul>
 </div>
 <div>

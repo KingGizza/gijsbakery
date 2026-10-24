@@ -2,11 +2,12 @@
   <button style="background-color: steelblue" routerLink="/">home</button>
 </div>
 <h1>pannekoeken</h1>
+<app-personen-kiezer />
 <div>
   <ul>
-    <li>250 gram bloem</li>
-    <li>3-4 eieren</li>
-    <li>500 ml melk</li>
+    <li><app-hoeveel [aantal]="250" /> gram bloem</li>
+    <li><app-hoeveel [aantal]="3" />-<app-hoeveel [aantal]="4" /> eieren</li>
+    <li><app-hoeveel [aantal]="500" /> ml melk</li>
     <li>snufje zout</li>
     <li>boter</li>
   </ul>

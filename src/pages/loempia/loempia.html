@@ -2,17 +2,18 @@
   <button style="background-color: steelblue" routerLink="/">home</button>
 </div>
 <h1>loempia</h1>
+<app-personen-kiezer />
 <div>
   <ul>
-    <li>10 loempiavellen (filodeeg)</li>
-    <li>100 gram mihoen (ongekookt)</li>
-    <li>125 gram tauge</li>
-    <li>100 gram julienne gesneden wortel</li>
-    <li>2-3 stelen bosui</li>
-    <li>2 eetlepels ketjap (Conimex)</li>
-    <li>2 takjes koriander (of peterselie)</li>
-    <li>2 tenen knoflook uitgeperst</li>
-    <li>2 cm gember geraspt</li>
+    <li><app-hoeveel [aantal]="10" /> loempiavellen (filodeeg)</li>
+    <li><app-hoeveel [aantal]="100" /> gram mihoen (ongekookt)</li>
+    <li><app-hoeveel [aantal]="125" /> gram tauge</li>
+    <li><app-hoeveel [aantal]="100" /> gram julienne gesneden wortel</li>
+    <li><app-hoeveel [aantal]="2" />-<app-hoeveel [aantal]="3" /> stelen bosui</li>
+    <li><app-hoeveel [aantal]="2" /> eetlepels ketjap (Conimex)</li>
+    <li><app-hoeveel [aantal]="2" /> takjes koriander (of peterselie)</li>
+    <li><app-hoeveel [aantal]="2" /> tenen knoflook uitgeperst</li>
+    <li><app-hoeveel [aantal]="2" /> cm gember geraspt</li>
     <li>peper en zout</li>
     <li>zonnebloemolie om in te bakken</li>
   </ul>

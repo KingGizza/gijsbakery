@@ -1,3 +1,5 @@
+import {Hoeveel} from '../../app/personen/hoeveel';
+import {PersonenKiezer} from '../../app/personen/personen-kiezer';
 import {RouterLink} from '@angular/router';
 import { Component, signal } from '@angular/core';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
@@ -5,7 +7,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @Component({
   selector: 'app-koekjes',
-  imports: [RouterLink, MatButtonToggleModule],
+  imports: [PersonenKiezer, Hoeveel, RouterLink, MatButtonToggleModule],
   templateUrl: './koekjes.html',
   styleUrl: './koekjes.scss',
 })

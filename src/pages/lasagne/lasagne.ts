@@ -1,10 +1,12 @@
+import {Hoeveel} from '../../app/personen/hoeveel';
+import {PersonenKiezer} from '../../app/personen/personen-kiezer';
 import {Component, signal} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {MatButtonToggle, MatButtonToggleGroup} from '@angular/material/button-toggle';
 
 @Component({
   selector: 'app-lasagne',
-  imports: [
+  imports: [PersonenKiezer, Hoeveel, 
     RouterLink
   ],
   templateUrl: './lasagne.html',

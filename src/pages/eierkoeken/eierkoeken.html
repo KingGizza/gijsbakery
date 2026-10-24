@@ -2,11 +2,12 @@
   <button style="background-color: steelblue" routerLink="/">home</button>
 </div>
 <h1>eierkoeken</h1>
+<app-personen-kiezer />
 <ul>
-<li>100 gram bloem</li>
-<li>2 eieren</li>
+<li><app-hoeveel [aantal]="100" /> gram bloem</li>
+<li><app-hoeveel [aantal]="2" /> eieren</li>
 <li>rasp van een halve citroen </li>
-<li>216 gram suiker</li>
+<li><app-hoeveel [aantal]="216" /> gram suiker</li>
 <li>snufje zout</li>
 <li> thee lepel bakpoeder</li>
 </ul>

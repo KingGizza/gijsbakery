@@ -2,14 +2,15 @@
   <button style="background-color: steelblue" routerLink="/">home</button>
 </div>
 <h1>macncheese</h1>
+<app-personen-kiezer />
 <ul>
-  <li>0.67 bloemkool (in roosjes)</li>
-  <li>1.33 ui</li>
-  <li>1.33 teen knoflook</li>
-  <li>666.67 ml bouillon</li>
-  <li>133.33 ml melk</li>
-  <li>200 gram geraspte mozzarella</li>
-<li>400 gram volkorenpasta</li>
+  <li><app-hoeveel [aantal]="0.67" /> bloemkool (in roosjes)</li>
+  <li><app-hoeveel [aantal]="1.33" /> ui</li>
+  <li><app-hoeveel [aantal]="1.33" /> teen knoflook</li>
+  <li><app-hoeveel [aantal]="666.67" /> ml bouillon</li>
+  <li><app-hoeveel [aantal]="133.33" /> ml melk</li>
+  <li><app-hoeveel [aantal]="200" /> gram geraspte mozzarella</li>
+<li><app-hoeveel [aantal]="400" /> gram volkorenpasta</li>
   <li>olie of boter om in te bakken</li>
   <li>snuf paprikapoeder</li>
   <li>peper en zout</li>
