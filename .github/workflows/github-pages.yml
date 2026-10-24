@@ -1,0 +1,49 @@
+name: Publiceer op GitHub Pages
+
+# Draait alleen in de repo gijsbakery/gijsbakery.github.io
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: github.repository == 'gijsbakery/gijsbakery.github.io'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Installeren en bouwen
+        run: |
+          npm install
+          npm run build
+          # Truc zodat pagina's als /koekjes ook direct (of na verversen) werken
+          cp dist/gijsbakery/browser/index.html dist/gijsbakery/browser/404.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/gijsbakery/browser
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     name: Build
+    # Alleen in de oude repo naar Azure publiceren
+    if: github.repository == 'KingGizza/gijsbakery'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
