@@ -10,6 +10,7 @@ import {Cupcakes} from '../pages/cupcakes/cupcakes';
 import {Lasagne} from '../pages/lasagne/lasagne';
 import {Pastasaus} from '../pages/pastasaus/pastasaus';
 import {Knakworstjesinbladerdeeg} from '../pages/knakworstjesinbladerdeeg/knakworstjesinbladerdeeg';
+import {Pastapesto} from '../pages/pastapesto/pastapesto';
 import {Nasigoreng} from '../pages/nasigoreng/nasigoreng';
 import {Wiebenik} from '../pages/wiebenik/wiebenik';
 import {Loempia} from '../pages/loempia/loempia';
@@ -31,6 +32,7 @@ export const routes: Routes = [
   {path: 'loempia', component: Loempia},
   {path: 'wiebenik', component: Wiebenik},
   {path: 'nasigoreng', component: Nasigoreng},
+  {path: 'pastapesto', component: Pastapesto},
   {path: 'knakworstjesinbladerdeeg', component: Knakworstjesinbladerdeeg},
 
 ];

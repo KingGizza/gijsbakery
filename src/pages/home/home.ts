@@ -7,6 +7,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {provideNativeDateAdapter} from '@angular/material/core';
+import { zoeklijst } from '../../app/zoeklijst';
 
 @Component({
   selector: 'app-home',
@@ -20,31 +21,23 @@ import {provideNativeDateAdapter} from '@angular/material/core';
 export class Home {
   date: string="";
 
-  // Zoekbalk: alle pagina's waarin je kunt zoeken.
-  // Maak je een nieuwe pagina? Zet hem dan ook in dit lijstje.
-  paginas = [
-    { naam: 'pizza', pad: '/pizza' },
-    { naam: 'pannekoeken', pad: '/gizza' },
-    { naam: 'lasagne', pad: '/lasagne' },
-    { naam: 'macncheese', pad: '/macncheese' },
-    { naam: 'poffertjes', pad: '/poffertjes' },
-    { naam: 'flatbread crispy chicken', pad: '/flatbreadcrispychicken' },
-    { naam: 'pastasaus', pad: '/pastasaus' },
-    { naam: 'nasi goreng', pad: '/nasigoreng' },
-    { naam: 'koekjes', pad: '/koekjes' },
-    { naam: 'eierkoeken', pad: '/eierkoeken' },
-    { naam: 'cupcakes', pad: '/cupcakes' },
-    { naam: 'loempia', pad: '/loempia' },
-    { naam: 'knakworstjes in bladerdeeg', pad: '/knakworstjesinbladerdeeg' },
-    { naam: 'wie ben ik', pad: '/wiebenik' },
-  ];
+  // Zoekbalk: zoekt op de naam van een pagina en op ingredienten.
+  // De lijst (zoeklijst.ts) wordt automatisch gemaakt bij "npm start" en "npm run build".
   zoekterm = signal('');
   resultaten = computed(() => {
     const term = this.zoekterm().trim().toLowerCase();
     if (term === '') {
       return [];
     }
-    return this.paginas.filter(pagina => pagina.naam.toLowerCase().includes(term));
+    const gevonden = [];
+    for (const pagina of zoeklijst) {
+      const inNaam = pagina.naam.toLowerCase().includes(term);
+      const ingredienten = pagina.ingredienten.filter(i => i.toLowerCase().includes(term));
+      if (inNaam || ingredienten.length > 0) {
+        gevonden.push({ naam: pagina.naam, pad: pagina.pad, ingredienten: inNaam ? [] : ingredienten });
+      }
+    }
+    return gevonden;
   });
 
   zoek(event: Event) {
@@ -94,6 +87,9 @@ export class Home {
  }
  openwiebenik() {
    this.router.navigate(['/wiebenik']);
+ }
+ openpastapesto() {
+   this.router.navigate(['/pastapesto']);
  }
  opennasigoreng() {
    this.router.navigate(['/nasigoreng']);
