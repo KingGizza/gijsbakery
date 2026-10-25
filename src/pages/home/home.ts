@@ -63,5 +63,8 @@ export class Home {
  openwiebenik() {
    this.router.navigate(['/wiebenik']);
  }
+ openknakworstjes() {
+   this.router.navigate(['/knakworstjesinbladerdeeg']);
+ }
 
 }

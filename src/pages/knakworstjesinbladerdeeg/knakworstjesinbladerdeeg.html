@@ -1,9 +1,16 @@
-<h1>knakworst in bladerdeeg </h1>
+<div>
+  <button style="background-color: steelblue; color: red" routerLink="/">home</button>
+</div>
+<h1>knakworstjes in bladerdeeg</h1>
+<app-personen-kiezer />
      <ul>
     <li>bladerdeeg</li>
     <li>knakworsten</li>
-    <li>1 ei</li>
+    <li><app-hoeveel [aantal]="1" /> ei</li>
        </ul>
+<div>
+  <button matbutton="elevated" style="background-color: steelblue; color: red" (click)="goAH()">albert heijn</button>
+</div>
   <h1>aan de slag</h1>
  <ol>
    <li>laat de bladerdeeg op kamertempratuur komen</li>
