@@ -3,6 +3,19 @@
     <h1>Welkom op  gijs bakery!</h1>
   </div>
 
+  <div class="zoekbalk">
+    <input type="search" placeholder="zoek een recept..." (input)="zoek($event)" />
+    @if (zoekterm().trim() !== '') {
+      <ul>
+        @for (pagina of resultaten(); track pagina.pad) {
+          <li><a [routerLink]="pagina.pad">{{ pagina.naam }}</a></li>
+        } @empty {
+          <li>niets gevonden</li>
+        }
+      </ul>
+    }
+  </div>
+
   <button matButton [matMenuTriggerFor]="aboveMenu" style="background-color: green">Hoofdgerechten</button>
   <mat-menu #aboveMenu="matMenu" yPosition="above">
     <button mat-menu-item style="background-color: darkred" (click)="openPizza()">Pizza</button>

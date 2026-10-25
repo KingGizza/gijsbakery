@@ -1,1 +1,25 @@
 
+
+.zoekbalk {
+  margin-bottom: 16px;
+}
+.zoekbalk input {
+  width: 250px;
+  box-sizing: border-box;
+  padding: 8px;
+  font-size: 16px;
+  border: 2px solid saddlebrown;
+  border-radius: 8px;
+}
+.zoekbalk ul {
+  background-color: white;
+  width: 250px;
+  box-sizing: border-box;
+  margin-top: 4px;
+  padding: 8px 8px 8px 28px;
+  border-radius: 8px;
+}
+.zoekbalk a {
+  color: saddlebrown;
+  font-size: 18px;
+}
