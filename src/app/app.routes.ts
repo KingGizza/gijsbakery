@@ -12,6 +12,7 @@ import {Pastasaus} from '../pages/pastasaus/pastasaus';
 import {Knakworstjesinbladerdeeg} from '../pages/knakworstjesinbladerdeeg/knakworstjesinbladerdeeg';
 import {Pastapesto} from '../pages/pastapesto/pastapesto';
 import {Nasigoreng} from '../pages/nasigoreng/nasigoreng';
+import {Waaromdoeikdit} from '../pages/waaromdoeikdit/waaromdoeikdit';
 import {Wiebenik} from '../pages/wiebenik/wiebenik';
 import {Loempia} from '../pages/loempia/loempia';
 import {Flatbreadcrispychicken} from '../pages/flatbreadcrispychicken/flatbreadcrispychicken';
@@ -31,6 +32,7 @@ export const routes: Routes = [
   {path: 'flatbreadcrispychicken', component: Flatbreadcrispychicken},
   {path: 'loempia', component: Loempia},
   {path: 'wiebenik', component: Wiebenik},
+  {path: 'waaromdoeikdit', component: Waaromdoeikdit},
   {path: 'nasigoreng', component: Nasigoreng},
   {path: 'pastapesto', component: Pastapesto},
   {path: 'knakworstjesinbladerdeeg', component: Knakworstjesinbladerdeeg},

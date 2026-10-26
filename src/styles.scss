@@ -37,3 +37,17 @@ mat-menu-item{
   opacity: 0;
 }
 /* You can add global styles to this file, and also import other style files */
+
+/* labels "vegetarisch" en "veganistisch" op recepten */
+.vega, .vegan {
+  display: inline-block;
+  margin: 0 6px 8px 0;
+  padding: 2px 10px;
+  border-radius: 12px;
+  background-color: green;
+  color: white;
+  font-weight: bold;
+}
+.vegan {
+  background-color: darkolivegreen;
+}

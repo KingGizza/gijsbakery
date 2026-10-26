@@ -1,6 +1,6 @@
 // Maakt automatisch de lijst voor de zoekbalk op de homepagina.
 // Hij kijkt in elke map in src/pages en haalt daar de titel (<h1>)
-// en de ingredienten (de <li>'s in de <ul>) uit.
+// en de ingredienten (de <li>'s in de <ul>) uit, en of het vegetarisch is.
 // Dit script draait vanzelf bij "npm start" en "npm run build".
 import fs from 'node:fs';
 import path from 'node:path';
@@ -33,7 +33,17 @@ for (const map of fs.readdirSync(pagesMap).sort()) {
       }
     }
   }
-  lijst.push({ naam, pad: '/' + map, ingredienten: ingredienten.map(alleenIngredient).filter(Boolean) });
+  // labels, bijvoorbeeld <p class="vega">vegetarisch</p> of <p class="vegan">veganistisch</p>
+  // zoekwoorden: de woorden waarop je dit label kunt vinden in de zoekbalk
+  const labels = [];
+  if (inhoud.includes('class="vega"')) {
+    labels.push({ label: 'vegetarisch', zoekwoorden: ['vegetarisch', 'vega', 'veggie'] });
+  }
+  if (inhoud.includes('class="vegan"')) {
+    labels.push({ label: 'veganistisch', zoekwoorden: ['veganistisch', 'vegan'] });
+  }
+
+  lijst.push({ naam, pad: '/' + map, labels, ingredienten: ingredienten.map(alleenIngredient).filter(Boolean) });
 }
 
 const uitvoer = `// LET OP: dit bestand wordt automatisch gemaakt door scripts/maak-zoeklijst.mjs.
@@ -42,6 +52,7 @@ const uitvoer = `// LET OP: dit bestand wordt automatisch gemaakt door scripts/m
 export interface ZoekPagina {
   naam: string;
   pad: string;
+  labels: { label: string; zoekwoorden: string[] }[];
   ingredienten: string[];
 }
 

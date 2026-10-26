@@ -32,9 +32,15 @@ export class Home {
     const gevonden = [];
     for (const pagina of zoeklijst) {
       const inNaam = pagina.naam.toLowerCase().includes(term);
+      const labels = pagina.labels.filter(l => l.zoekwoorden.some(w => w.includes(term))).map(l => l.label);
       const ingredienten = pagina.ingredienten.filter(i => i.toLowerCase().includes(term));
-      if (inNaam || ingredienten.length > 0) {
-        gevonden.push({ naam: pagina.naam, pad: pagina.pad, ingredienten: inNaam ? [] : ingredienten });
+      if (inNaam || labels.length > 0 || ingredienten.length > 0) {
+        gevonden.push({
+          naam: pagina.naam,
+          pad: pagina.pad,
+          labels: inNaam ? [] : labels,
+          ingredienten: inNaam || labels.length > 0 ? [] : ingredienten,
+        });
       }
     }
     return gevonden;
@@ -84,6 +90,9 @@ export class Home {
  }
  openloempia() {
    this.router.navigate(['/loempia']);
+ }
+ openwaaromdoeikdit() {
+   this.router.navigate(['/waaromdoeikdit']);
  }
  openwiebenik() {
    this.router.navigate(['/wiebenik']);

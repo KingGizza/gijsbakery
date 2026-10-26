@@ -10,6 +10,9 @@
         @for (pagina of resultaten(); track pagina.pad) {
           <li>
             <a [routerLink]="pagina.pad">{{ pagina.naam }}</a>
+            @if (pagina.labels.length > 0) {
+              <span class="met"> ({{ pagina.labels.join(', ') }})</span>
+            }
             @if (pagina.ingredienten.length > 0) {
               <span class="met"> (met {{ pagina.ingredienten.join(', ') }})</span>
             }
@@ -46,6 +49,7 @@
   <button matButton [matMenuTriggerFor]="overigeMenu" style="background-color: steelblue">Overige</button>
   <mat-menu #overigeMenu="matMenu" xPosition="after">
     <button mat-menu-item style="background-color: lightblue" (click)="openwiebenik()">wie ben ik</button>
+    <button mat-menu-item style="background-color: lightsteelblue" (click)="openwaaromdoeikdit()">waarom doe ik dit</button>
   </mat-menu>
   <button matButton [matMenuTriggerFor]="snacksMenu" style="background-color: rgb(255, 0, 111)">Snacks</button>
   <mat-menu #snacksMenu="matMenu" xPosition="after">

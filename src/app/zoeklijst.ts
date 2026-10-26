@@ -4,6 +4,7 @@
 export interface ZoekPagina {
   naam: string;
   pad: string;
+  labels: { label: string; zoekwoorden: string[] }[];
   ingredienten: string[];
 }
 
@@ -11,6 +12,16 @@ export const zoeklijst: ZoekPagina[] = [
   {
     "naam": "cupcakes",
     "pad": "/cupcakes",
+    "labels": [
+      {
+        "label": "vegetarisch",
+        "zoekwoorden": [
+          "vegetarisch",
+          "vega",
+          "veggie"
+        ]
+      }
+    ],
     "ingredienten": [
       "twee keer bakvorm met vormpjes",
       "roomboter",
@@ -24,6 +35,16 @@ export const zoeklijst: ZoekPagina[] = [
   {
     "naam": "eierkoeken",
     "pad": "/eierkoeken",
+    "labels": [
+      {
+        "label": "vegetarisch",
+        "zoekwoorden": [
+          "vegetarisch",
+          "vega",
+          "veggie"
+        ]
+      }
+    ],
     "ingredienten": [
       "bloem",
       "eieren",
@@ -36,6 +57,7 @@ export const zoeklijst: ZoekPagina[] = [
   {
     "naam": "flatbread crispy chicken",
     "pad": "/flatbreadcrispychicken",
+    "labels": [],
     "ingredienten": [
       "kipfilethaasjes",
       "bloem",
@@ -48,6 +70,16 @@ export const zoeklijst: ZoekPagina[] = [
   {
     "naam": "pannekoeken",
     "pad": "/gizza",
+    "labels": [
+      {
+        "label": "vegetarisch",
+        "zoekwoorden": [
+          "vegetarisch",
+          "vega",
+          "veggie"
+        ]
+      }
+    ],
     "ingredienten": [
       "bloem",
       "eieren",
@@ -59,6 +91,7 @@ export const zoeklijst: ZoekPagina[] = [
   {
     "naam": "knakworstjes in bladerdeeg",
     "pad": "/knakworstjesinbladerdeeg",
+    "labels": [],
     "ingredienten": [
       "bladerdeeg",
       "knakworsten",
@@ -68,6 +101,16 @@ export const zoeklijst: ZoekPagina[] = [
   {
     "naam": "koekjes",
     "pad": "/koekjes",
+    "labels": [
+      {
+        "label": "vegetarisch",
+        "zoekwoorden": [
+          "vegetarisch",
+          "vega",
+          "veggie"
+        ]
+      }
+    ],
     "ingredienten": [
       "ongezouten roomboter",
       "witte basterdsuiker",
@@ -80,6 +123,16 @@ export const zoeklijst: ZoekPagina[] = [
   {
     "naam": "lasagne",
     "pad": "/lasagne",
+    "labels": [
+      {
+        "label": "vegetarisch",
+        "zoekwoorden": [
+          "vegetarisch",
+          "vega",
+          "veggie"
+        ]
+      }
+    ],
     "ingredienten": [
       "boter",
       "bloem",
@@ -97,6 +150,23 @@ export const zoeklijst: ZoekPagina[] = [
   {
     "naam": "loempia",
     "pad": "/loempia",
+    "labels": [
+      {
+        "label": "vegetarisch",
+        "zoekwoorden": [
+          "vegetarisch",
+          "vega",
+          "veggie"
+        ]
+      },
+      {
+        "label": "veganistisch",
+        "zoekwoorden": [
+          "veganistisch",
+          "vegan"
+        ]
+      }
+    ],
     "ingredienten": [
       "loempiavellen (filodeeg)",
       "mihoen (ongekookt)",
@@ -114,6 +184,16 @@ export const zoeklijst: ZoekPagina[] = [
   {
     "naam": "macncheese",
     "pad": "/macncheese",
+    "labels": [
+      {
+        "label": "vegetarisch",
+        "zoekwoorden": [
+          "vegetarisch",
+          "vega",
+          "veggie"
+        ]
+      }
+    ],
     "ingredienten": [
       "bloemkool (in roosjes)",
       "ui",
@@ -130,6 +210,7 @@ export const zoeklijst: ZoekPagina[] = [
   {
     "naam": "nasi goreng",
     "pad": "/nasigoreng",
+    "labels": [],
     "ingredienten": [
       "nasi- of wokgroenten",
       "rijst",
@@ -150,6 +231,16 @@ export const zoeklijst: ZoekPagina[] = [
   {
     "naam": "pasta pesto",
     "pad": "/pastapesto",
+    "labels": [
+      {
+        "label": "vegetarisch",
+        "zoekwoorden": [
+          "vegetarisch",
+          "vega",
+          "veggie"
+        ]
+      }
+    ],
     "ingredienten": [
       "pasta (bijvoorbeeld penne of fusilli)",
       "potje groene pesto (190 gram)",
@@ -164,6 +255,23 @@ export const zoeklijst: ZoekPagina[] = [
   {
     "naam": "pastasaus",
     "pad": "/pastasaus",
+    "labels": [
+      {
+        "label": "vegetarisch",
+        "zoekwoorden": [
+          "vegetarisch",
+          "vega",
+          "veggie"
+        ]
+      },
+      {
+        "label": "veganistisch",
+        "zoekwoorden": [
+          "veganistisch",
+          "vegan"
+        ]
+      }
+    ],
     "ingredienten": [
       "gepelde tomaten (uit blik)",
       "ui",
@@ -180,6 +288,23 @@ export const zoeklijst: ZoekPagina[] = [
   {
     "naam": "pizza",
     "pad": "/pizza",
+    "labels": [
+      {
+        "label": "vegetarisch",
+        "zoekwoorden": [
+          "vegetarisch",
+          "vega",
+          "veggie"
+        ]
+      },
+      {
+        "label": "veganistisch",
+        "zoekwoorden": [
+          "veganistisch",
+          "vegan"
+        ]
+      }
+    ],
     "ingredienten": [
       "bloem",
       "droge gist",
@@ -196,6 +321,16 @@ export const zoeklijst: ZoekPagina[] = [
   {
     "naam": "poffertjes",
     "pad": "/poffertjes",
+    "labels": [
+      {
+        "label": "vegetarisch",
+        "zoekwoorden": [
+          "vegetarisch",
+          "vega",
+          "veggie"
+        ]
+      }
+    ],
     "ingredienten": [
       "bloem",
       "bakpoeder",
@@ -207,8 +342,15 @@ export const zoeklijst: ZoekPagina[] = [
     ]
   },
   {
+    "naam": "waarom doe ik dit",
+    "pad": "/waaromdoeikdit",
+    "labels": [],
+    "ingredienten": []
+  },
+  {
     "naam": "wie ben ik",
     "pad": "/wiebenik",
+    "labels": [],
     "ingredienten": []
   }
 ];
